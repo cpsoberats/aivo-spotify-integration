@@ -11,9 +11,6 @@ return function (App $app) {
         return $response;
     });
 
-    $app->get('/api/v1/albums', function (Request $request, Response $response) {
-        $this->logger->info("Albums request received");
-        return (new ListArtistAlbumsAction($this))->getAlbums($request, $response);
-    });
+    $app->get('/api/v1/albums', ListArtistAlbumsAction::class);
 
 };

@@ -1,9 +1,5 @@
 <?php
 
-use App\Action\Spotify\ListArtistAlbumsResponder;
-use App\Services\SpotifyService;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 use Slim\App;
 
 require '../vendor/autoload.php';
@@ -23,22 +19,8 @@ $config = [
 
 $app = new App($config);
 
-$container = $app->getContainer();
-
-$container['spotify_service'] = function ($c) {
-    return new SpotifyService();
-};
-
-$container['list_albums_responder'] = function ($c) {
-    return new ListArtistAlbumsResponder();
-};
-
-$container['logger'] = function($c) {
-    $logger = new Logger('aivo_spotify_api');
-    $file_handler = new StreamHandler("../logs/app.log");
-    $logger->pushHandler($file_handler);
-    return $logger;
-};
+$container = require __DIR__ . '/../app/dependencies.php';
+$container($app);
 
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);

@@ -20,10 +20,13 @@ class ListArtistAlbumsAction
     /**
      * @param Request $request
      * @param Response $response
-     * @return Response
+     * @param array $args
+     * @return mixed
      */
-    public function getAlbums(Request $request, Response $response)
+    public function __invoke(Request $request, Response $response, $args=[])
     {
+        $this->container->get('logger')->info("List albums by artist name request received");
+
         $queryParams = $request->getQueryParams();
         if (!isset($queryParams['q']) || empty(trim($queryParams['q']))) {
             return $this->container->get('list_albums_responder')->error($response, 400, ActionError::BAD_REQUEST,
