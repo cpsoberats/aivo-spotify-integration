@@ -24,13 +24,14 @@ http://localhost/api/v1/albums?q=<band-name>
   
   ```
   $ git clone https://github.com/cpsoberats/aivo-spotify-integration.git
+  $ cd aivo-spotify-integration
   $ composer install
   $ composer start
   ```
 - Para ejecutar las pruebas:
-```
+  ```
   $ composer test
-```
+  ```
 ## Tecnologías utilizadas
 - Slim3
 - Guzzle
