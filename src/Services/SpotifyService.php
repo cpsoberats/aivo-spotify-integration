@@ -8,6 +8,9 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 
+/*
+ * Service class in charge of get spotify data
+ */
 class SpotifyService
 {
     private Client $serviceClient;
@@ -20,6 +23,8 @@ class SpotifyService
     }
 
     /**
+     * Return spotify access token of authenticated user
+     *
      * @return mixed
      * @throws GuzzleException
      */
@@ -43,6 +48,8 @@ class SpotifyService
     }
 
     /**
+     * Get Spotify artist albums by artist's name
+     *
      * @param string $bandName
      * @return array|ResponseInterface
      * @throws GuzzleException

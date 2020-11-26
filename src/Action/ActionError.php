@@ -22,12 +22,12 @@ class ActionError implements JsonSerializable
     /**
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * @var string
      */
-    private $description;
+    private ?string $description;
 
     /**
      * @param string        $type
